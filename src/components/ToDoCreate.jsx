@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
-function ToDoCreate() {
+function ToDoCreate({ onCreateToDo }) {
+  const [newTodo, setNewTodo] = useState("");
+  function createToDo() {
+    if (!newTodo) return;
+    const request = {
+      id: Math.floor(Math.random() * 999999),
+      content: newTodo,
+    };
+    onCreateToDo(request);
+  }
   return (
     <div className="todo-create">
       <input
+        value={newTodo}
         type="text"
         className="todo-input"
-        placeholder="Enter todo"></input>
-      <button className="create-todo-btn">Create Todo</button>
+        placeholder="Enter todo"
+        onChange={(e) => setNewTodo(e.target.value)}></input>
+      <button className="create-todo-btn" onClick={createToDo}>
+        Create Todo
+      </button>
     </div>
   );
 }
