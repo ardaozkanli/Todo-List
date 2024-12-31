@@ -2,6 +2,11 @@ import React, { useState } from "react";
 
 function ToDoCreate({ onCreateToDo }) {
   const [newTodo, setNewTodo] = useState("");
+
+  function clearInput() {
+    setNewTodo("");
+  }
+
   function createToDo() {
     if (!newTodo) return;
     const request = {
@@ -9,6 +14,7 @@ function ToDoCreate({ onCreateToDo }) {
       content: newTodo,
     };
     onCreateToDo(request);
+    clearInput();
   }
   return (
     <div className="todo-create">
