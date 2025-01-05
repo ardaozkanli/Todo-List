@@ -25,7 +25,7 @@ function ToDoCreate({ onCreateToDo }) {
         placeholder="Enter todo"
         onChange={(e) => setNewTodo(e.target.value)}></input>
       <button className="create-todo-btn" onClick={createToDo}>
-        Createe Todo
+        Create Todo
       </button>
     </div>
   );
